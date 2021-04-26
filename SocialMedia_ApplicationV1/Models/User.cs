@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SocialMedia_ApplicationV1.Models
@@ -15,7 +15,7 @@ namespace SocialMedia_ApplicationV1.Models
         public string Password { get; set; }
         [Required]
         public string Address { get; set; }
-        [Required]
+        //[Required]
         public string Image { get; set; }
 
     }
