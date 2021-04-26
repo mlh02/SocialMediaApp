@@ -16,6 +16,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.5" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0-alpha.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />
