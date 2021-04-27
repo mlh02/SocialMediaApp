@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="Views\User\" />
     <Folder Include="wwwroot\UserImages\" />
+    <Folder Include="Auth\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />
