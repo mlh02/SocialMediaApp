@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -61,9 +63,43 @@ namespace SocialMedia_ApplicationV1.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
-
-
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Login(User modal)
+        {
+            var user = _context.Users.Where(u => u.Email == modal.Email && u.Password == modal.Password).FirstOrDefault();
+
+            if (user != null)
+            {
+                var userClaims = new List<Claim>()
+                {
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim("Image", user.Image),
+
+                };
+
+                var userIdentity = new ClaimsIdentity(userClaims, "User Identity");
+
+                var userPrincipal = new ClaimsPrincipal(new[] { userIdentity });
+                HttpContext.SignInAsync(userPrincipal);
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+
+            }
+        }
+
 
     }
 }
