@@ -60,7 +60,7 @@
                                 var Id = User.FindFirst("Id").Value;
                                 var Img = User.FindFirst("Image").Value;
                                 <button class="btn btn-outline-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="~/images/@Html.DisplayFor(model => Img)" class="img-thumbnail" />&nbsp;&nbsp;
+                                    <img src="~/UserImages/@Html.DisplayFor(model => Img)" class="img-thumbnail" />&nbsp;&nbsp;
                                     @Name
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
