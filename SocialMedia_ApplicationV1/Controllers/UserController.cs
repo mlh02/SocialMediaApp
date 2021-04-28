@@ -95,7 +95,7 @@ namespace SocialMedia_ApplicationV1.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("AccessDenied", "User");
 
             }
         }
