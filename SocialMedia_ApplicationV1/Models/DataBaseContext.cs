@@ -9,6 +9,7 @@ namespace SocialMedia_ApplicationV1.Models
         {
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
 
     }
 }
