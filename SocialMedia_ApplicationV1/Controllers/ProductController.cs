@@ -86,5 +86,40 @@ namespace SocialMedia_ApplicationV1.Controllers
 
             return View(prod);
         }
+
+        // GET: Product/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pro = await _context.Products
+                .Include(r => r.User)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pro == null)
+            {
+                return NotFound();
+            }
+
+            return View(pro);
+        }
+
+        // POST: Product/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var prod = await _context.Products.FindAsync(id);
+            _context.Products.Remove(prod);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Product");
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
+        }
     }
 }
